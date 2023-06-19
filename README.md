@@ -1,46 +1,22 @@
-# Getting Started with Create React App
+# Виджет погоды
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Виджет погоды, созданный на React и Typesctript и использующий OpenWeatherMap API для получения данных.
 
-## Available Scripts
+![image](https://github.com/q-ello/weather-forecast/assets/116018445/3ba6c3e0-89d6-40bc-b151-2ecbac28911a)
+Меню состоит из кнопки, получающей текущее местоположение пользователя, инпута для введения места вручную, кнопки для получения данных и переключателя между данными.
 
-In the project directory, you can run:
+![image](https://github.com/q-ello/weather-forecast/assets/116018445/16189948-eb60-499f-b657-3ed6a374f45c)
+При нажатии на кнопку геопозиции в инпуте появляется ваше местоположение, а в кнопке для получения данных меняется содержание.
 
-### `npm start`
+![image](https://github.com/q-ello/weather-forecast/assets/116018445/5eb1c662-a000-4125-ab80-a8e006c52e1b)
+При запрете на получение геоданных появляется предупреждение.
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+![image](https://github.com/q-ello/weather-forecast/assets/116018445/ba3249fc-6d7b-4089-b682-34a4ea55175a)
+При попытке получить данные с пустым инпутом также появляется предупреждение.
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+![image](https://github.com/q-ello/weather-forecast/assets/116018445/9dd50962-ba05-4dca-9725-925fffafa90d)
+![image](https://github.com/q-ello/weather-forecast/assets/116018445/5414d376-6dca-43c8-b5fb-4be391f5ebe7)
+Данные различаются в зависимости от выбранного типа: в текущей погоде больше информации, в прогнозе на пять дней же я решила оставить только температуру и описание погоды. Дизайн простенький, также есть вёрстка на мобильную версию.
 
-### `npm test`
-
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
-
-### `npm run build`
-
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
+![image](https://github.com/q-ello/weather-forecast/assets/116018445/7012974a-c219-4687-9d9c-a6fb68ae7712)
+Также при ошибке сервера выскакивает оповещение с причиной неполадок.
