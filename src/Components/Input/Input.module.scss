@@ -1,0 +1,15 @@
+@import '../../variables.scss';
+
+.input {
+    margin-right: 10px;
+    margin-bottom: 10px;
+    height: 100%;
+    border-radius: 4px;
+    padding: 10px;
+    outline: none;
+    color: $bg-color;
+
+    @media screen and (max-width: 900px) {
+        margin-left: 10px;
+    }
+}

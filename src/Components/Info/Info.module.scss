@@ -1,0 +1,110 @@
+@import '../../variables.scss';
+
+.info {
+    margin: 0 auto;
+    padding-top: 100px;
+
+    @media screen and (max-width: 900px) {
+        margin-top: 50px;
+    }
+}
+
+.head {
+    display: flex;
+    color: $text-primary-color;
+    display: flex;
+    justify-content: center;
+    align-items: baseline;
+}
+
+.location {
+    margin-right: 10px;
+    font-size: 50px;
+    margin-bottom: 25px;
+
+    @media screen and (max-width: 900px) {
+        font-size: 30px;
+    }
+}
+
+.current {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: $text-secondary-color;
+
+    &_temp {
+        font-size: 75px;
+        margin-right: 20px;
+        font-weight: 700;
+
+        @media screen and (max-width: 900px) {
+            font-size: 40px;
+        }
+    }
+
+    &_right_bar {
+        display: flex;
+        flex-direction: column;
+    }
+
+    &_weather {
+        text-transform: uppercase;
+        font-weight: 700;
+        display: flex;
+        align-items: center;
+        font-size: 25px;
+    }
+}
+
+.span {
+    margin-bottom: 5px;
+}
+
+
+.daily {
+    display: flex;
+    justify-content: space-around;
+    color: $text-secondary-color;
+
+    @media screen and (max-width: 900px) {
+        flex-direction: column;
+        justify-content: center;
+    }
+
+    &_day {
+        @media screen and (max-width: 900px) {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin-bottom: 30px;
+        }
+    }
+
+    &_hour {
+        display: flex;
+        align-items: center;
+    }
+
+    &_date {
+        margin-bottom: 15px;
+        font-size: 25px;
+    }
+
+    &_span {
+        margin-right: 5px;
+        padding: 0;
+    }
+
+    &_timestamp {
+        color: #474747;
+    }
+
+    &_icon {
+        width: 45px;
+
+        @media screen and (max-width: 900px) {
+            width: 40px;
+        }
+    }
+}
