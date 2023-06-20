@@ -4,16 +4,16 @@ import { ReactComponent as MyLocation } from './svg/my-location.svg'
 import { Input } from './Components/Input/Input';
 import { ReactComponent as Search } from './svg/search.svg';
 import { Switch } from '@mui/material';
-import { Info } from './Components/Info/Info';
+import { IInfo, Info } from './Components/Info/Info';
 import './App.scss'
 
 
 function App() {
-  const [location, setLocation] = useState('')
-  const [myLocation, setMyLocation] = useState(null)
+  const [location, setLocation] = useState<string>('')
+  const [myLocation, setMyLocation] = useState<string | null>(null)
   const key: string = '15b2d054d4dbe628721a971c7b939228'
-  const [props, setProps] = useState({})
-  const [isCurrent, setIsCurrent] = useState(true)
+  const [props, setProps] = useState<IInfo>({})
+  const [isCurrent, setIsCurrent] = useState<boolean>(true)
 
   const getMyLocation = (): void => {
     const success: PositionCallback = (pos: GeolocationPosition): void => {
@@ -35,7 +35,7 @@ function App() {
         })
     }
 
-    const error: PositionErrorCallback = (error: GeolocationPositionError): void => {
+    const error: PositionErrorCallback = (): void => {
       setProps({
         alert: ['warning', 'Мы не можем показать Вам прогноз погоды таким способом: у нас нет разрешения на доступ к Вашим геоданным']
       })
@@ -46,8 +46,8 @@ function App() {
     })
   }
 
-  const handleChange = (e: ChangeEvent<HTMLInputElement>): void => {
-    setLocation(e.target.value)
+  const handleChange = (value: string): void => {
+    setLocation(value)
   }
 
   const getInfo = (): void => {
@@ -85,7 +85,7 @@ function App() {
               sunrise: new Date(+data.sys.sunrise * 1000),
               sunset: new Date(+data.sys.sunset * 1000),
               isCurrent: isCurrent,
-              location: location,
+              location: data.name,
               date: new Date(+data.dt * 1000)
             })
           }
@@ -105,7 +105,7 @@ function App() {
               icon: icon,
               isCurrent: isCurrent,
               temp: temp,
-              location: location,
+              location: data.city.name,
             })
           }
         }
@@ -131,7 +131,7 @@ function App() {
           <MyLocation />
         </Button>
         <Input
-          value={location}
+          location={location}
           placeholder='Enter a city'
           name='location'
           onChange={handleChange}

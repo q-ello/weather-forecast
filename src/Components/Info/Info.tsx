@@ -2,7 +2,7 @@ import React from 'react'
 import { Alert } from '@mui/material'
 import st from './Info.module.scss'
 
-interface IInfo {
+export interface IInfo {
     temp?: number[][],
     description?: string[][],
     icon?: string[][],
