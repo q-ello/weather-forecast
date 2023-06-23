@@ -1,26 +1,21 @@
-import React, { ChangeEvent, useState } from "react"
+import React, { ChangeEvent } from "react"
 import st from './Input.module.scss'
 
 interface IInput {
-    location: string,
     placeholder: string,
     name: string,
-    onChange: (value: string) => void
+    onChange: (e: ChangeEvent<HTMLInputElement>) => void,
+    value: string,
 }
 
-export const Input: React.FunctionComponent<IInput> = ({ location, placeholder, name, onChange }) => {
-
-    const handleChange = (e: ChangeEvent<HTMLInputElement>): void => {
-        onChange(e.target.value)
-    }
-
+export const Input: React.FunctionComponent<IInput> = ({ value, placeholder, name, onChange }) => {
     return (
         <input
-            value={location}
+            value={value}
             placeholder={placeholder}
             name={name}
             type="text"
-            onChange={handleChange}
+            onChange={onChange}
             className={st.input}
         />
     )

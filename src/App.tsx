@@ -1,56 +1,22 @@
-import React, { ChangeEvent, useState } from 'react';
-import { Button } from './Components/Button/Button';
-import { ReactComponent as MyLocation } from './svg/my-location.svg'
-import { Input } from './Components/Input/Input';
-import { ReactComponent as Search } from './svg/search.svg';
+import { useState } from 'react';
 import { Switch } from '@mui/material';
 import { IInfo, Info } from './Components/Info/Info';
 import './App.scss'
+import { SearchForm } from './Components/SearchForm/SearchForm';
 
 
 function App() {
-  const [location, setLocation] = useState<string>('')
-  const [myLocation, setMyLocation] = useState<string | null>(null)
+  console.log('App render')
   const key: string = '15b2d054d4dbe628721a971c7b939228'
   const [props, setProps] = useState<IInfo>({})
   const [isCurrent, setIsCurrent] = useState<boolean>(true)
 
-  const getMyLocation = (): void => {
-    const success: PositionCallback = (pos: GeolocationPosition): void => {
-      const coords = pos.coords
-      const url: string = `https://api.openweathermap.org/data/2.5/weather?lat=${coords.latitude}&lon=${coords.longitude}&appid=${key}&lang=ru`
-
-      fetch(url)
-        .then(response => {
-          return response.json()
-        })
-        .then(data => {
-          setLocation(data.name)
-          setMyLocation(data.name)
-        })
-        .catch(() => {
-          setProps({
-            alert: ['error', 'Произошла ошибка в получении геоданных']
-          })
-        })
-    }
-
-    const error: PositionErrorCallback = (): void => {
-      setProps({
-        alert: ['warning', 'Мы не можем показать Вам прогноз погоды таким способом: у нас нет разрешения на доступ к Вашим геоданным']
-      })
-    }
-
-    navigator.geolocation.getCurrentPosition(success, error, {
-      enableHighAccuracy: true,
-    })
+  const handleGeolocationError = (props: IInfo) => {
+    setProps(props)
   }
+  
 
-  const handleChange = (value: string): void => {
-    setLocation(value)
-  }
-
-  const getInfo = (): void => {
+  const getInfo = (location: string): void => {
     if (!location) {
       setProps({
         alert: ['warning', 'Мы не можем дать Вам прогноз погоды, если нам неизвестно место']
@@ -124,24 +90,12 @@ function App() {
 
   return (
     <div className='container'>
-      <div className='search_form'>
-        <Button
-          onClick={getMyLocation}
-        >
-          <MyLocation />
-        </Button>
-        <Input
-          location={location}
-          placeholder='Enter a city'
-          name='location'
-          onChange={handleChange}
+      <div className='form'>
+        <SearchForm
+          handleError={handleGeolocationError}
+          getInfo={getInfo}
+          APIkey={key}
         />
-        <Button
-          onClick={getInfo}
-        >
-          {myLocation === location ? 'Получить прогноз погоды в Вашем городе' : `Получить прогноз погоды в данном городе`}
-          <Search className='search_svg'/>
-        </Button>
         <div className='switch'>
         <span className='switch_span'>Текущая погода</span>
         <Switch onChange={handleSwitchChange}/>

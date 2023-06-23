@@ -22,17 +22,10 @@ body {
     }
 }
 
-.search_form {
-    margin: 0 auto;
+.form {
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 52px;
-    flex-wrap: wrap;
-}
-
-.search_svg {
-    margin-left: 10px;
 }
 
 .switch {
